@@ -12,6 +12,7 @@
     "vite": "^7.0.4"
   },
   "dependencies": {
+    "@rive-app/canvas": "^2.30.4",
     "swiper": "^11.2.10"
   }
 }
