@@ -21,7 +21,7 @@
         params.append(key, value);
       }
     }
-    const targetUrl = "https://app.datagrid.com/log-in?" + params.toString();
+    const targetUrl = "https://app.datagrid.com/sign-up?" + params.toString();
     window.open(targetUrl, "_blank");
   });
 })();
