@@ -5,6 +5,21 @@
 
   const form = component.querySelector("form");
   const textArea = form.querySelector("textarea");
+  const placeholderText = component.dataset.placeholder.trim();
+  let targetUrl = component.dataset.targetUrl.trim();
+
+  let currentIndex = 0;
+  const typewriterEffect = () => {
+    if (currentIndex < placeholderText.length) {
+      textArea.setAttribute(
+        "placeholder",
+        placeholderText.substring(0, currentIndex + 1),
+      );
+      currentIndex++;
+      setTimeout(typewriterEffect, 20);
+    }
+  };
+  typewriterEffect();
 
   textArea.addEventListener("input", () => {
     textArea.style.height = "auto";
@@ -21,7 +36,7 @@
         params.append(key, value);
       }
     }
-    const targetUrl = "https://app.datagrid.com/sign-up?" + params.toString();
+    targetUrl += `?${params.toString()}`;
     window.open(targetUrl, "_blank");
   });
 })();
