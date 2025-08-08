@@ -5,10 +5,16 @@ import gsap from "gsap";
   if (!component) return;
 
   const menuButton = component.querySelector("[data-navbar='menu-button']");
-  const overlay = component.querySelector(".w-nav-overlay");
-
   menuButton.addEventListener("click", toggleScroll);
-  overlay.addEventListener("click", toggleScroll);
+  let overlay;
+  const overlayInterval = setInterval(() => {
+    overlay = component.querySelector(".w-nav-overlay");
+    if (overlay) {
+      clearInterval(overlayInterval);
+      overlay.addEventListener("click", toggleScroll);
+    }
+  }, 100);
+  
   function toggleScroll() {
     document.body.style.overflow =
       document.body.style.overflow === "hidden" ? "auto" : "hidden";
