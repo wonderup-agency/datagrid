@@ -12,7 +12,14 @@ import gsap from "gsap";
     let totalHeight = 0;
     if (firstSection) totalHeight += firstSection.offsetHeight;
     if (secondSection) totalHeight += secondSection.offsetHeight;
-    bgGrid.style.height = `${totalHeight}px`;
+    gsap.set(bgGrid, {
+      height: `${totalHeight}px`,
+    });
+    gsap.to(bgGrid, {
+      opacity: 1,
+      duration: 2,
+      ease: "power1.in",
+    });
   }
 
   // RIVE
@@ -137,7 +144,6 @@ import gsap from "gsap";
       const randomIndex = Math.floor(Math.random() * itemsJson.length);
       const randomItem = itemsJson[randomIndex];
       const taskElement = document.createElement("div");
-      taskElement.setAttribute("aria-hidden", "");
       taskElement.className = randomItem.class;
       const imgElement = document.createElement("img");
       imgElement.src = randomItem.img.src;
@@ -152,7 +158,7 @@ import gsap from "gsap";
 
       const inDelay = getRandomBetween(0, 3);
       const inOutDuration = getRandomBetween(3, 5);
-      const stayDuration = getRandomBetween(3, 6);
+      const stayDuration = getRandomBetween(3, 8);
 
       // 30% chance for item to be further behind
       const depth =
