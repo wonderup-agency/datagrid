@@ -1,5 +1,3 @@
-import gsap from "gsap";
-
 (() => {
   const component = document.querySelector("[data-component='navbar']");
   if (!component) return;
@@ -14,7 +12,7 @@ import gsap from "gsap";
       overlay.addEventListener("click", toggleScroll);
     }
   }, 100);
-  
+
   function toggleScroll() {
     document.body.style.overflow =
       document.body.style.overflow === "hidden" ? "auto" : "hidden";
