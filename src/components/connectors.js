@@ -2,6 +2,7 @@
   const component = document.querySelector("[data-component='connectors']");
   if (!component) return;
 
+  // FILTERS MENU
   const filtersMenuButton = component.querySelector(
     "[data-connectors='filters-menu-button']",
   );
@@ -38,10 +39,24 @@
   }
 
   function handleOutsideClick(e) {
+    const target = e.target;
     if (
-      !filtersMenu.contains(e.target) &&
-      !filtersMenuButton.contains(e.target)
+      (!filtersMenu.contains(target) && !filtersMenuButton.contains(target)) ||
+      target == filtersMenu.querySelector('[fs-list-element="clear"]') ||
+      target.nodeName == "INPUT"
     )
       closeMenu();
   }
+
+  // SET URL ON ITEMS
+  const list = component.querySelector("[fs-list-element='list']");
+  if (!list) return;
+
+  const urlPrefix = "https://docs.datagrid.com/connectors/";
+  list.childNodes.forEach((item) => {
+    const link = item.querySelector("a");
+    const href = link.getAttribute("href") || "";
+    const slug = href.replace(/^\/+|\/+$/g, "");
+    if (slug) link.setAttribute("href", `${urlPrefix}${slug}`);
+  });
 })();
