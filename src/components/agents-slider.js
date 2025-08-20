@@ -15,12 +15,12 @@ Swiper.use([Navigation]);
 
   if (!slider || !mask || !blackout || !prevEl || !nextEl) return;
 
-  const urlPrefix = "https://docs.datagrid.com/connectors/";
-  items.forEach((link) => {
-    const href = link.getAttribute("href") || "";
-    const slug = href.replace(/^\/+|\/+$/g, "");
-    if (slug) link.setAttribute("href", `${urlPrefix}${slug}`);
-  });
+  // const urlPrefix = "https://docs.datagrid.com/connectors/";
+  // items.forEach((link) => {
+  //   const href = link.getAttribute("href") || "";
+  //   const slug = href.replace(/^\/+|\/+$/g, "");
+  //   if (slug) link.setAttribute("href", `${urlPrefix}${slug}`);
+  // });
 
   slider.append(mask, blackout);
 
